@@ -35,7 +35,7 @@ export class FeedbackService {
     });
   }
 
-  async delete(id: number): Promise<Feedback> {
+  async delete(id: string): Promise<Feedback> {
     return await this.prisma.feedback.delete({
       where: {
         id,
