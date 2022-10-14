@@ -1,0 +1,20 @@
+{
+  "name": "react-nest-feedback",
+  "version": "1.0.0",
+  "description": "- front em react + vite - back em nestJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kauan-Azevedo/react_nest_feedback.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kauan-Azevedo/react_nest_feedback/issues"
+  },
+  "homepage": "https://github.com/Kauan-Azevedo/react_nest_feedback#readme"
+}

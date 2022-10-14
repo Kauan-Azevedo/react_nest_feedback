@@ -1,7 +1,6 @@
 datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
@@ -14,4 +13,6 @@ model Feedback {
   content   String
   name      String?
   CreatedAt DateTime @default(now())
+
+  @@map("feedback")
 }
