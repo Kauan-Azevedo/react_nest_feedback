@@ -25,3 +25,15 @@ nav ul li:hover a {
     color: var(--secondary-color);
     transition: all .2s ease;
 }
+
+@media (max-width: 415px) {
+    header {
+        justify-content: center;
+    }
+
+    nav ul {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}

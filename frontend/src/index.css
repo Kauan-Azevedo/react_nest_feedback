@@ -71,8 +71,8 @@ main {
 }
 
 .vantagens {
-  width: 40rem;
-  height: 15rem;
+  max-width: 40rem;
+  max-height: 15rem;
   margin: 3rem auto;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -82,7 +82,7 @@ main {
 }
 
 .vantagem-card {
-  height: 100%;
+  max-height: 100%;
   min-width: 40rem;
   display: flex;
   align-items: center;
@@ -99,4 +99,22 @@ main {
 .vantagem-card h3 {
   font-size: 1.3rem;
   margin: 1rem;
+}
+
+
+@media (max-width: 680px) {
+  .vantagens {
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+  }
+
+  .vantagem-card {
+    max-width: 40rem;
+    min-width: 0px;
+    min-height: 15rem;
+    /* scroll-snap-align: center; */
+  }
+
 }

@@ -17,19 +17,19 @@ export function Home() {
             <div className="vantagem-card">
               <div className="">
                 <img src="/Comentarios.svg" alt="bolhas de dialogo" />
-                <h3>Envie seu Feedback</h3>
+                <h3>Envie seu feedback.</h3>
               </div>
             </div>
             <div className="vantagem-card">
               <div>
                 <img src="/Person.svg" alt="Icone de um " />
-                <h3>Anônimo ou Identificado</h3>
+                <h3>Se identifique ou se mantenha anônimo.</h3>
               </div>
             </div>
             <div className="vantagem-card">
               <div>
                 <img src="/Save.svg" alt="" />
-                <h3>Salve seu feedback</h3>
+                <h3>Salve seu feedback.</h3>
               </div>
             </div>
           </div>
