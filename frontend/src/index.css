@@ -2,14 +2,13 @@
 
 :root {
   --primary-color: #DA4167;
-  --secondary-color: #832161;
+  --secondary-color: #fdc500;
 
   --text-color: #F0EFF4;
-  --bg-color: #3D2645;
+  --bg-color: #342e37;
 
-  --container-width: 1200px;
+  --container-width: 1266px;
 }
-
 
 * {
   margin: 0;
@@ -32,6 +31,67 @@ ul {
 
 body {
   background-color: var(--bg-color);
-  color: var(--primary-color);
+  color: var(--text-color);
   font-family: 'Roboto', sans-serif;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+main {
+  min-height: 80vh;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: .7rem;
+  height: .7rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+
+/* <===> INICIO <===> */
+.container {
+  margin-top: 7rem;
+  text-align: center;
+}
+
+.vantagens {
+  width: 40rem;
+  height: 10rem;
+  margin: 3rem auto;
+  overflow-x: scroll;
+  display: flex;
+  scroll-snap-type: x mandatory;
+}
+
+.vantagem-card {
+  height: 100%;
+  min-width: 40rem;
+  scroll-snap-align: center;
+}
+
+.vantagem-card:nth-child(1) {
+  background-color: red;
+}
+
+.vantagem-card:nth-child(2) {
+  background-color: green;
+}
+
+.vantagem-card:nth-child(3) {
+  background-color: blue;
 }

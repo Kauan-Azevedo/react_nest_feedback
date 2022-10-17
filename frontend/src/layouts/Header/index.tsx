@@ -1,20 +1,20 @@
 import React from "react";
-import head from "./header.module.css";
+import style from "./header.module.css";
 
 export function Header() {
   return (
-    <header className={head.header}>
+    <header className={style.header}>
       <h2>Lorem</h2>
       <nav>
         <ul>
           <li>
-            <a href="">Home</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="">Todos</a>
+            <a href="/feedbacks">Feedbacks</a>
           </li>
           <li>
-            <a href="">Adicionar</a>
+            <a href="#adicionar">Adicionar Feedback</a>
           </li>
         </ul>
       </nav>
