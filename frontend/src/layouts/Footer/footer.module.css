@@ -1,0 +1,25 @@
+.container {
+    min-height: 7rem;
+    width: 100%;
+    max-width: var(--container-width);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+
+}
+
+.container p:hover {
+    color: var(--primary-color);
+    cursor: default;
+}
+
+
+@media(max-width: 400px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+        padding-bottom: 1rem;
+    }
+}
