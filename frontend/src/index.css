@@ -41,6 +41,7 @@ main {
   min-height: 80vh;
 }
 
+/* <===> SCROLLBAR <===> */
 /* width */
 ::-webkit-scrollbar {
   width: .7rem;
@@ -49,19 +50,19 @@ main {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #da416745;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--primary-color);
+  border-radius: 10rem;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--secondary-color);
 }
-
 
 /* <===> INICIO <===> */
 .container {
@@ -71,27 +72,31 @@ main {
 
 .vantagens {
   width: 40rem;
-  height: 10rem;
+  height: 15rem;
   margin: 3rem auto;
   overflow-x: scroll;
+  overflow-y: hidden;
   display: flex;
   scroll-snap-type: x mandatory;
+  border-radius: 1.5rem;
 }
 
 .vantagem-card {
   height: 100%;
   min-width: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   scroll-snap-align: center;
 }
 
-.vantagem-card:nth-child(1) {
-  background-color: red;
+.vantagem-card img {
+  object-fit: cover;
+  width: 8rem;
+  filter: invert(30%) sepia(73%) saturate(1892%) hue-rotate(321deg) brightness(94%) contrast(81%);
 }
 
-.vantagem-card:nth-child(2) {
-  background-color: green;
-}
-
-.vantagem-card:nth-child(3) {
-  background-color: blue;
+.vantagem-card h3 {
+  font-size: 1.3rem;
+  margin: 1rem;
 }
