@@ -8,7 +8,9 @@ export function Header() {
       <nav>
         <ul>
           <li>
-            <a href="/" className="active">Home</a>
+            <a href="/" className={style.active}>
+              Home
+            </a>
           </li>
           <li>
             <a href="/feedbacks">Feedbacks</a>

@@ -35,6 +35,7 @@ body {
   font-family: 'Roboto', sans-serif;
   max-width: var(--container-width);
   margin: 0 auto;
+  scroll-behavior: smooth;
 }
 
 main {
@@ -62,59 +63,4 @@ main {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--secondary-color);
-}
-
-/* <===> INICIO <===> */
-.container {
-  margin-top: 7rem;
-  text-align: center;
-}
-
-.vantagens {
-  max-width: 40rem;
-  max-height: 15rem;
-  margin: 3rem auto;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  display: flex;
-  scroll-snap-type: x mandatory;
-  border-radius: 1.5rem;
-}
-
-.vantagem-card {
-  max-height: 100%;
-  min-width: 40rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  scroll-snap-align: center;
-}
-
-.vantagem-card img {
-  object-fit: cover;
-  width: 8rem;
-  filter: invert(30%) sepia(73%) saturate(1892%) hue-rotate(321deg) brightness(94%) contrast(81%);
-}
-
-.vantagem-card h3 {
-  font-size: 1.3rem;
-  margin: 1rem;
-}
-
-
-@media (max-width: 680px) {
-  .vantagens {
-    flex-direction: column;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scroll-snap-type: y mandatory;
-  }
-
-  .vantagem-card {
-    max-width: 40rem;
-    min-width: 0px;
-    min-height: 15rem;
-    /* scroll-snap-align: center; */
-  }
-
 }

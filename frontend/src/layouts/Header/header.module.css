@@ -26,7 +26,11 @@ nav ul li:hover a {
     transition: all .2s ease;
 }
 
-@media (max-width: 415px) {
+.active {
+    color: var(--secondary-color);
+}
+
+@media(max-width: 415px) {
     header {
         justify-content: center;
     }
@@ -34,6 +38,5 @@ nav ul li:hover a {
     nav ul {
         justify-content: center;
         align-items: center;
-        text-align: center;
     }
 }
