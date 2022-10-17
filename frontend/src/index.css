@@ -1,70 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  --primary-color: #DA4167;
+  --secondary-color: #fdc500;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --text-color: #F0EFF4;
+  --bg-color: #342e37;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --container-width: 1266px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: var(--text-color);
+  text-decoration: none;
 }
+
 a:hover {
-  color: #535bf2;
+  color: var(--text-color)
+}
+
+ul {
+  list-style: none;
 }
 
 body {
-  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+main {
+  min-height: 80vh;
+}
+
+/* <===> SCROLLBAR <===> */
+/* width */
+::-webkit-scrollbar {
+  width: .7rem;
+  height: .7rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #da416745;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+/* <===> INICIO <===> */
+.container {
+  margin-top: 7rem;
+  text-align: center;
+}
+
+.vantagens {
+  width: 40rem;
+  height: 15rem;
+  margin: 3rem auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  scroll-snap-type: x mandatory;
+  border-radius: 1.5rem;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.vantagem-card {
+  height: 100%;
+  min-width: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.vantagem-card img {
+  object-fit: cover;
+  width: 8rem;
+  filter: invert(30%) sepia(73%) saturate(1892%) hue-rotate(321deg) brightness(94%) contrast(81%);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.vantagem-card h3 {
+  font-size: 1.3rem;
+  margin: 1rem;
 }

@@ -1,0 +1,27 @@
+header {
+    max-width: var(--container-width);
+    color: var(--primary-color);
+    min-height: 80px;
+    margin: 0 auto;
+    padding: 0 .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7rem;
+    height: 100%;
+}
+
+nav ul li a {
+    color: var(--primary-color);
+}
+
+nav ul li:hover a {
+    color: var(--secondary-color);
+    transition: all .2s ease;
+}
