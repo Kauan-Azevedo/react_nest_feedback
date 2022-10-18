@@ -23,12 +23,26 @@
     height: 27px;
     border: 1px solid var(--bg-input-color);
     border-radius: 7px;
+    outline: none;
+    padding: 0 .25rem;
 }
 
 .send-btn {
-    --bg-color: black;
-
     width: 80%;
     min-height: 35px;
     color: var(--text-color);
+    background-color: var(--primary-color);
+    border: none;
+    box-shadow: 0 0 10px rgba(41, 41, 41, 0.303);
+    position: relative;
+    top: 0;
+    transition: top .2s ease, background-color .2s ease;
+}
+
+.send-btn:hover {
+    --primary-hover: #c33a5c;
+
+    cursor: pointer;
+    background-color: var(--primary-hover);
+    top: -3px;
 }
