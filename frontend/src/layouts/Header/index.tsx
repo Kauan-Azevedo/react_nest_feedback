@@ -16,7 +16,7 @@ export function Header() {
             <a href="/feedbacks">Feedbacks</a>
           </li>
           <li>
-            <a href="#adicionar">Adicionar Feedback</a>
+            <a href="/feedbacks/adicionar">Adicionar Feedback</a>
           </li>
         </ul>
       </nav>

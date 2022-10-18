@@ -6,6 +6,7 @@ import { Home } from "./pages/Home";
 import { Feedbacks } from "./pages/Feedbacks";
 import { Header } from "./layouts/Header";
 import { Footer } from "./layouts/Footer";
+import { Adicionar } from "./pages/Feedbacks/Adicionar";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/feedbacks",
     element: <Feedbacks />,
+  },
+  {
+    path: "feedbacks/adicionar",
+    element: <Adicionar />,
   },
 ]);
 

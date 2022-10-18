@@ -31,6 +31,7 @@
     position: relative;
     top: 0;
     transition: top .2s ease;
+    animation: rotate 1s alternate infinite;
 }
 
 .vantagem-card img:hover {
@@ -42,6 +43,16 @@
 .vantagem-card h3 {
     font-size: 1.3rem;
     margin: 1rem;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(-5deg) translateY(4px);
+    }
+
+    to {
+        transform: rotate(7deg) translateY(-3px);
+    }
 }
 
 @media (max-width: 640px) {
