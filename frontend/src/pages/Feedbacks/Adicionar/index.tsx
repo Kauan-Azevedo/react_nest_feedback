@@ -44,7 +44,7 @@ export function Adicionar() {
     api
       .post("/feedback", data, config)
       .then((response: any) => setRes(response))
-      .catch((error) => {
+      .catch((error: any) => {
         let data: { error: boolean; message: string } = {
           error: true,
           message: `${error}`,
