@@ -43,6 +43,8 @@
 .vantagem-card h3 {
     font-size: 1.3rem;
     margin: 1rem;
+    user-select: none;
+
 }
 
 @keyframes rotate {

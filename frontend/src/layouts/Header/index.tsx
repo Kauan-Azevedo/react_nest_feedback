@@ -8,15 +8,19 @@ export function Header() {
       <nav>
         <ul>
           <li>
-            <a href="/" className={style.active}>
+            <a href="/" className={style["link"]}>
               Home
             </a>
           </li>
           <li>
-            <a href="/feedbacks">Feedbacks</a>
+            <a className={style["link"]} href="/feedbacks">
+              Feedbacks
+            </a>
           </li>
           <li>
-            <a href="/feedbacks/adicionar">Adicionar Feedback</a>
+            <a className={style["link"]} href="/feedbacks/adicionar">
+              Adicionar Feedback
+            </a>
           </li>
         </ul>
       </nav>
