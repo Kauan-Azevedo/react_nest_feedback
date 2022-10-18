@@ -1,0 +1,34 @@
+.container {
+    max-width: 400px;
+    min-height: 20rem;
+    background-color: var(--primary-color);
+    margin: 7% auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .9rem;
+}
+
+.label-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 80%;
+}
+
+.label-group input {
+    --bg-input-color: --primary-color;
+
+    height: 27px;
+    border: 1px solid var(--bg-input-color);
+    border-radius: 7px;
+}
+
+.send-btn {
+    --bg-color: black;
+
+    width: 80%;
+    min-height: 35px;
+    color: var(--text-color);
+}
