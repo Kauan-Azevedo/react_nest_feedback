@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { api } from "../../../services/api";
 import style from "./adicionar.module.css";
 import alert from "./alert.module.css";
@@ -7,7 +7,7 @@ export function Adicionar() {
   const [title, setTitle] = useState("");
   const [content, setConent] = useState("");
   const [nome, setNome] = useState("");
-  const [res, setRes] = useState();
+  const [res, setRes] = useState<{}>();
   const [error, setError] = useState<{}>();
 
   const getValues = (e: any, type: string) => {
@@ -53,6 +53,16 @@ export function Adicionar() {
       });
   };
 
+  useEffect(() => {
+    if (res) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+      setError(undefined);
+    } else if (error) {
+      setRes(undefined);
+    }
+  }, [res, error]);
   return (
     <>
       <section>
@@ -60,15 +70,23 @@ export function Adicionar() {
           <div className={`${alert["alert-box"]} ${alert["error"]}`}>
             <h3 className={alert["alert-title"]}>Erro ao enviar o feedback!</h3>
             <p className={alert["alert-content"]}>
-              Seu feedback foi enviado com sucesso va para a lista para ve-lo,
-              ou <a className={alert["alert-redirect"]}>clique-aqui</a>
+              Ocorreu um erro no envio do seu feedback,{" "}
+              <a
+                className={alert["alert-redirect"]}
+                onClick={() => {
+                  window.location.reload();
+                }}
+              >
+                Tente novamente.
+              </a>
             </p>
           </div>
         ) : undefined}
+
         <div className={style["container"]}>
           <h2>Enviar Feedback</h2>
           <label htmlFor="title" className={style["label-group"]}>
-            Titulo
+            Titulo*
             <input
               type="text"
               onKeyUp={(e) => {
@@ -77,7 +95,7 @@ export function Adicionar() {
             />
           </label>
           <label htmlFor="content" className={style["label-group"]}>
-            Conteudo
+            Conteudo*
             <input
               type="text"
               onKeyUp={(e) => {
@@ -98,6 +116,7 @@ export function Adicionar() {
             Enviar
           </button>
         </div>
+
         {res ? (
           <div className={`${alert["alert-box"]} ${alert["success"]}`}>
             <h3 className={alert["alert-title"]}>
