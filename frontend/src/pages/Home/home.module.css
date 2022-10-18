@@ -1,0 +1,72 @@
+/* <===> INICIO <===> */
+.container {
+    margin-top: 7rem;
+    text-align: center;
+}
+
+.vantagens {
+    max-width: 40rem;
+    height: 15rem;
+    margin: 3rem auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    scroll-snap-type: x mandatory;
+    border-radius: 1.5rem;
+}
+
+.vantagem-card {
+    height: 100%;
+    min-width: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: center;
+}
+
+.vantagem-card img {
+    object-fit: cover;
+    width: 8rem;
+    filter: invert(30%) sepia(73%) saturate(1892%) hue-rotate(321deg) brightness(94%) contrast(81%);
+    position: relative;
+    top: 0;
+    transition: top .2s ease;
+    animation: rotate 1s alternate infinite;
+}
+
+.vantagem-card img:hover {
+    filter: invert(75%) sepia(36%) saturate(3474%) hue-rotate(3deg) brightness(109%) contrast(103%);
+    ;
+    top: -.9rem;
+}
+
+.vantagem-card h3 {
+    font-size: 1.3rem;
+    margin: 1rem;
+    user-select: none;
+
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(-5deg) translateY(4px);
+    }
+
+    to {
+        transform: rotate(7deg) translateY(-3px);
+    }
+}
+
+@media (max-width: 640px) {
+    .vantagens {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        flex-direction: column;
+    }
+
+    .vantagem-card {
+        min-width: 0;
+        min-height: 15rem;
+    }
+}
