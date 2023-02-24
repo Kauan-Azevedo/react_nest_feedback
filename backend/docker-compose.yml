@@ -1,16 +1,19 @@
 version: '3'
 
 services:
+  nest-backend:
+    
+
   postgres-compose:
     image: postgres
-    environment:
-      POSTGRES_PASSWORD: "postgresql"
-    ports:
-      - "15432:5432"
     volumes:
       - /var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: "postgresql"
+      POSTGRES_HOST: "localhost"
     networks:
       - postgres-compose-network
+    restart: always
 
   pgadmin-compose:
     image: dpage/pgadmin4
