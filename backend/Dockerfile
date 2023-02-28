@@ -1,49 +1,38 @@
-###################
-# BUILD FOR LOCAL DEVELOPMENT
-###################
+# FROM node:18-alpine As development
+# # Especifica a versao do node. ver no DockerHub
 
-FROM node:18-alpine As development
+# WORKDIR /usr/src/app
+# # Cada coamndo executado será nesse contexto
 
-WORKDIR /usr/src/app
+# COPY package*.json ./
+# # Copia o package.json e package-lock.json caso exista
 
-COPY --chown=node:node package*.json ./
+# RUN npm ci --only=development
+# # npm ci? é semelhante ao npm install
+# # O comando RUN roda durante o build do container
+# # --only instala SOMENTE as devDependencies
 
-RUN npm ci
+# COPY . .
+# # Copia os arquivos da aplicação para o container
 
-COPY --chown=node:node . .
-
-USER node
-
-###################
-# BUILD FOR PRODUCTION
-###################
-
-FROM node:18-alpine As build
-
-WORKDIR /usr/src/app
-
-COPY --chown=node:node package*.json ./
-
-COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modules
-
-COPY --chown=node:node . .
-
-RUN npm run build
-
-ENV NODE_ENV production
+# RUN npm run build
 
 
-RUN npm ci --only=production && npm cache clean --force
+# FROM node:18-alpine As production
 
-USER node
+# ARG NODE_ENV=production
+# # ARG que dine o valor padrão para o NODE_ENV
+# ENV NODE_ENV=${NODE_ENV}
+# # ENV seta o valor padrão ou oque o usuario passou
 
-###################
-# PRODUCTION
-###################
+# WORKDIR /usr/src/app
 
-FROM node:18-alpine As production
+# COPY package*.json ./
 
-COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
-COPY --chown=node:node --from=build /usr/src/app/dist ./dist
+# RUN npm ci --only=production
 
-CMD [ "node", "dist/main.js" ]
+# COPY . .
+
+# COPY --from=development /usr/src/app/dist ./dist
+
+# CMD [ "node", "dist/main" ]

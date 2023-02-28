@@ -1,43 +1,42 @@
+# version: '3'
+
+# services:
+#   postgres-compose:
+#     container_name: postgres
+#     image: postgres
+#     volumes:
+#       # - /var/lib/postgresql/data
+#       - .docker/dbdata:/var/lib/postgresql/data
+#     environment:
+#       POSTGRES_PASSWORD: "postgresql"
+#       POSTGRES_HOST: "localhost"
+#     networks:
+#       - postgres-compose-network
+#     restart: always
+
+#   pgadmin-compose:
+#     container_name: pgadmin
+#     image: dpage/pgadmin4
+#     environment:
+#       PGADMIN_DEFAULT_EMAIL: "example@example.com"
+#       PGADMIN_DEFAULT_PASSWORD: "pgadmin1234"
+#     ports:
+#       - "16543:80"
+#     depends_on:
+#       - postgres-compose
+#     networks:
+#       - postgres-compose-network
+# networks:
+#   postgres-compose-network:
+#     driver: bridge
+
 version: '3'
 
 services:
-  api:
-    build:
-      dockerfile: Dockerfile
-      context: .
-
-      target: development
-    volumes:
-      - .:/usr/src/app
-    env_file: .env
-    command: npm run start:dev
-    ports:
-      - 3000:3000
-
   postgres-compose:
     container_name: postgres
     image: postgres
-    volumes:
-      - /var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: "postgresql"
-      POSTGRES_HOST: "localhost"
-    networks:
-      - postgres-compose-network
-    restart: always
-
-  pgadmin-compose:
-    container_name: pgadmin
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "example@example.com"
-      PGADMIN_DEFAULT_PASSWORD: "pgadmin1234"
     ports:
-      - "16543:80"
-    depends_on:
-      - postgres-compose
-    networks:
-      - postgres-compose-network
-networks:
-  postgres-compose-network:
-    driver: bridge
+      - '5432:5432'
+    volumes:
+      - .docker/dbdata:/var/lib/postgresql/data
