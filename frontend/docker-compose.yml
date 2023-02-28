@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      dockerfile: Dockerfile
+      context: .
+
+    volumes:
+      - .:/frontend
+
+    command: yarn install
+    ports:
+      - 3000:3000
