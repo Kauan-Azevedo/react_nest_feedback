@@ -4,8 +4,8 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Feedbacks } from "./pages/Feedbacks";
-import { Header } from "./layouts/Header";
-import { Footer } from "./layouts/Footer";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 import { Adicionar } from "./pages/Feedbacks/Adicionar";
 
 const router = createBrowserRouter([
