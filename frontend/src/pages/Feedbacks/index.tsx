@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import style from './feedback.module.css';
+import { Feedback } from '../../interfaces/feedback';
 
 export function Feedbacks() {
-    const [feedback, setFeedback] = useState<{}[]>();
+    const [feedback, setFeedback] = useState<Feedback[]>();
 
     const getFeed: () => Promise<void> = async () => {
         const { data } = await api.get('/feedback');
@@ -20,7 +21,7 @@ export function Feedbacks() {
             <h2 className={style['feed-header']}>Lista de Feedbacks</h2>
             <div className={style['container']}>
                 {feedback ? (
-                    feedback.map((feed: any) => (
+                    feedback.map((feed: Feedback) => (
                         <div className={style['feed-card']} key={feed.id}>
                             <h2 className={style['feed-title']}>
                                 {feed.title}
@@ -34,7 +35,7 @@ export function Feedbacks() {
                         </div>
                     ))
                 ) : (
-                    <h3>Não foi possivel renderizar os feedbacks</h3>
+                    <h3>Nenhum feedback.</h3>
                 )}
             </div>
         </section>
