@@ -1,5 +1,42 @@
-# version: '3'
+version: '3'
 
+services:
+  postgres-compose:
+    image: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: 'postgresql'
+    ports:
+      - '5432:5432'
+    volumes:
+      - .docker/postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'example@example.com'
+      PGADMIN_DEFAULT_PASSWORD: 'pgadmin1234'
+    ports:
+      - '16543:80'
+    volumes:
+      - .docker/pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - postgres-compose
+    restart: unless-stopped
+
+  api_nest_feedback:
+    stdin_open: true
+    container_name: nest_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3001
+    depends_on:
+      - postgres-compose
+    restart: always
 # services:
 #   postgres-compose:
 #     container_name: postgres
@@ -13,30 +50,9 @@
 #     networks:
 #       - postgres-compose-network
 #     restart: always
-
-#   pgadmin-compose:
-#     container_name: pgadmin
-#     image: dpage/pgadmin4
-#     environment:
-#       PGADMIN_DEFAULT_EMAIL: "example@example.com"
-#       PGADMIN_DEFAULT_PASSWORD: "pgadmin1234"
-#     ports:
-#       - "16543:80"
-#     depends_on:
-#       - postgres-compose
-#     networks:
-#       - postgres-compose-network
+# networks:
+#   - postgres-compose-network
 # networks:
 #   postgres-compose-network:
 #     driver: bridge
 
-version: '3'
-
-services:
-  postgres-compose:
-    container_name: postgres
-    image: postgres
-    ports:
-      - '5432:5432'
-    volumes:
-      - .docker/dbdata:/var/lib/postgresql/data
