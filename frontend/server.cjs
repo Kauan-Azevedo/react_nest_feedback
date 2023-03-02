@@ -1,18 +1,15 @@
 const express = require('express');
-const { resolve } = require('path');
+const path = require('path');
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.use('/',
-    express.static(
-        resolve(
-            __dirname, './dist'
-        )
-    ));
+app.use(express.static(path.join(__dirname, 'dist')));
 
-app
-    .listen(process.env.PORT || 3000, (err) => {
-        if (err) { return console.log(err) }
+app.use('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
 
-        console.log("Funcionando 🚀🚀🚀")
-    });
+app.listen(process.env.PORT || 3000, () => console.log(`Aplicação rodando em http://localhost:${process.env.PORT || 3000}`));

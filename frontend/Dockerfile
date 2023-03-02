@@ -1,13 +1,12 @@
-FROM node:18-alpine
-
-EXPOSE 3000
-
-WORKDIR /frontend
-
-COPY package.json .
-
-RUN yarn
+FROM node:18-alpine AS builder
+WORKDIR /app
 
 COPY . .
+COPY package*.json /app
 
-CMD ["yarn", "dev"]
+RUN yarn
+RUN yarn build
+
+EXPOSE 9000
+
+CMD yarn start

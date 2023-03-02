@@ -1,14 +1,10 @@
-version: '3'
+version: "3"
 
 services:
-  frontend:
-    build:
+  react_vite_feedbacks:
+    container_name: react_vite_feedbacks
+    # image: node:alpine
+    build: 
       dockerfile: Dockerfile
-      context: .
-
-    volumes:
-      - .:/frontend
-
-    command: yarn install
     ports:
       - 3000:3000
