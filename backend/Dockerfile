@@ -13,24 +13,21 @@ COPY . .
 RUN npx prisma generate
 RUN npm run build
 
-CMD npx prisma migrate deploy
-# CMD npx prisma db push
+# CMD ["npx", "prisma migrate dev"]
 
 
 FROM node:18-alpine AS deploy
 
 WORKDIR /api
 ENV NODE_ENV production
-# COPY --from=build /app/public ./public
-# COPY --from=build /app/package.json ./package.json
-# COPY --from=build /app/prisma ./prisma
+
 COPY --from=build ./app .
 
 EXPOSE 3001
 
 ENV PORT 3001
 
-CMD npm run start
+CMD ["npm","run", "start"]
 
 
 
