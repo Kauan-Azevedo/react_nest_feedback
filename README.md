@@ -2,6 +2,7 @@
 
 - front em react + vite
 - back em nestJS
+- Docker
 
 ## 🎉 Objetivo
 
