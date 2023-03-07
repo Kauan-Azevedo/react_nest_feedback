@@ -1,8 +1,11 @@
 # ✨ Projeto
 
-- front em react + vite
-- back em nestJS
+- frontend usando Vite React com Typescript
+- backend usando NestJS
+- ORM prisma
+- Banco de dados em PostgreSQL
+- Docker
 
 ## 🎉 Objetivo
 
-- <strong>Principal</strong>: aplicar aprendizado tanto em frontend quanto em backend em uma unica aplicação.
+- <strong>Principal</strong>: Aplicar diversos conhecimentos desde de front, back e docker quanto em deploy em uma unica aplicação.
