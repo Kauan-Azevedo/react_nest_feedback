@@ -1,7 +1,9 @@
 # ✨ Projeto
 
-- front em react + vite
-- back em nestJS
+- frontend usando Vite React com Typescript
+- backend usando NestJS
+- ORM prisma
+- Banco de dados em PostgreSQL
 - Docker
 
 ## 🎉 Objetivo
