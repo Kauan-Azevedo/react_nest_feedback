@@ -1,57 +1,61 @@
-# FROM node:18-alpine As development
-# # Especifica a versao do node. ver no DockerHub
+FROM node:18-alpine AS deps
 
-# WORKDIR /usr/src/app
-# # Cada coamndo executado será nesse contexto
-
-# COPY package*.json ./
-# # Copia o package.json e package-lock.json caso exista
-
-# RUN npm ci --only=development
-# # npm ci? é semelhante ao npm install
-# # O comando RUN roda durante o build do container
-# # --only instala SOMENTE as devDependencies
-
-# COPY . .
-# # Copia os arquivos da aplicação para o container
-
-# RUN npm run build
-
-
-# FROM node:18-alpine As production
-
-# ARG NODE_ENV=production
-# # ARG que dine o valor padrão para o NODE_ENV
-# ENV NODE_ENV=${NODE_ENV}
-# # ENV seta o valor padrão ou oque o usuario passou
-
-# WORKDIR /usr/src/app
-
-# COPY package*.json ./
-
-# RUN npm ci --only=production
-
-# COPY . .
-
-# COPY --from=development /usr/src/app/dist ./dist
-
-# CMD [ "node", "dist/main" ]
-
-#
-# =====================================
-#
-
-FROM node:18-alpine AS builder 
-WORKDIR /api
-
-COPY package*.json /api
-COPY prisma ./prisma/
-COPY . .
-
+WORKDIR /deps
+COPY package*.json ./
 RUN npm install
+
+
+FROM node:18-alpine AS build
+
+WORKDIR /app
+COPY --from=deps ./deps/node_modules ./node_modules
+COPY . .
 RUN npx prisma generate
 RUN npm run build
 
+CMD npx prisma migrate deploy
+# CMD npx prisma db push
+
+
+FROM node:18-alpine AS deploy
+
+WORKDIR /api
+ENV NODE_ENV production
+# COPY --from=build /app/public ./public
+# COPY --from=build /app/package.json ./package.json
+# COPY --from=build /app/prisma ./prisma
+COPY --from=build ./app .
+
 EXPOSE 3001
 
+ENV PORT 3001
+
 CMD npm run start
+
+
+
+# FROM node:18-alpine AS builder 
+# WORKDIR /api
+
+# COPY package*.json /api
+# COPY prisma ./prisma/
+# COPY . .
+
+# RUN npm install
+# RUN npx prisma generate
+# RUN npm run build
+
+# # CMD ["npx" "prisma" "migrate"]
+# CMD npx prisma db push
+
+# FROM node:18-alpine
+
+# # COPY --from=builder /api/node_modules ./node_modules
+# # COPY --from=builder /api/package*.json ./
+# # COPY --from=builder /api/dist ./dist
+# COPY --from=builder ./api .
+
+# EXPOSE 3001
+
+# # CMD ["npm", "run", "start"]
+# CMD npm run start
