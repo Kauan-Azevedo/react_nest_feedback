@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+    postgres-compose:
+        image: postgres
+        container_name: postgres
+        environment:
+            POSTGRES_PASSWORD: "postgresql"
+        ports:
+            - "5432:5432"
+        volumes:
+            - .docker/postgres-data:/var/lib/postgresql/data
+        restart: unless-stopped
+    react_vite_feedbacks:
+        container_name: react_vite_feedbacks
+        # image: node:alpine
+        build:
+            dockerfile: ./frontend/Dockerfile
+        ports:
+            - 3000:3000
+
+    api_nest_feedback:
+        stdin_open: true
+        container_name: nest_api
+        build:
+            context: .
+            dockerfile: ./backend/Dockerfile
+        ports:
+            - 3001:3001
+        depends_on:
+            - postgres-compose
+        restart: always
