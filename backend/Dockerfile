@@ -14,6 +14,7 @@ RUN npx prisma generate
 RUN npm run build
 
 # CMD ["npx", "prisma migrate dev"]
+# CMD npx prisma db push
 
 
 FROM node:18-alpine AS deploy
@@ -27,8 +28,7 @@ EXPOSE 3001
 
 ENV PORT 3001
 
-CMD npm run start
-
+CMD npm run start:migrate:prod
 
 # FROM node:18-alpine AS builder 
 # WORKDIR /api
