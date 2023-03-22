@@ -14,6 +14,6 @@ app.use("/", (req, res) => {
 
 app.listen(process.env.PORT || 3000, () =>
     console.log(
-        `Aplicação rodando em http://localhost:${process.env.PORT || 3000}`
+        `Aplication running on http://localhost:${process.env.PORT || 3000}`
     )
 );
